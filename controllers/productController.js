@@ -9,10 +9,10 @@ exports.getAllGadgets = (req, res) => {
 };
 
 exports.createProducts = (req, res) => {
-  const { id, itemName, unitPrice, quantity, supplier } = req.body;
+  const {itemName, unitPrice, quantity, supplier } = req.body;
   connection.query(
-    "INSERT INTO gadgets (id, itemName, unitPrice, quantity, supplier) VALUES (?, ?, ?, ?, ?)",
-    [id, itemName, unitPrice, quantity, supplier],
+    "INSERT INTO gadgets (itemName, unitPrice, quantity, supplier) VALUES (?, ?, ?, ?)",
+    [itemName, unitPrice, quantity, supplier],
     (err, result) => {
       if (err) throw err;
       res.json({
@@ -22,4 +22,5 @@ exports.createProducts = (req, res) => {
     },
   );
 };
+
 
